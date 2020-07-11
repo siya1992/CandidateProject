@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CANDIDATE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIRSTNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LASTNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PHONECODE" Type="Int32" />
+    <Property Name="MOBILE" Type="Int32" Nullable="false" />
+    <Property Name="CITY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COUNTRY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PINCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IMAGELOCATION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="WORKEXPERIENCEs" Relationship="Self.FK_WORKEXPERIENCE_CANDIDATE" FromRole="CANDIDATE" ToRole="WORKEXPERIENCE" />
+  </EntityType>
+  <EntityType Name="WORKEXPERIENCE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CANDIDATEID" Type="Int32" Nullable="false" />
+    <Property Name="EMPLOYER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FROMDATE" Type="DateTime" Precision="0" />
+    <Property Name="TODATE" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CANDIDATE" Relationship="Self.FK_WORKEXPERIENCE_CANDIDATE" FromRole="WORKEXPERIENCE" ToRole="CANDIDATE" />
+  </EntityType>
+  <Association Name="FK_WORKEXPERIENCE_CANDIDATE">
+    <End Role="CANDIDATE" Type="Self.CANDIDATE" Multiplicity="1" />
+    <End Role="WORKEXPERIENCE" Type="Self.WORKEXPERIENCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CANDIDATE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WORKEXPERIENCE">
+        <PropertyRef Name="CANDIDATEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TestEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CANDIDATEs" EntityType="Self.CANDIDATE" />
+    <EntitySet Name="WORKEXPERIENCEs" EntityType="Self.WORKEXPERIENCE" />
+    <AssociationSet Name="FK_WORKEXPERIENCE_CANDIDATE" Association="Self.FK_WORKEXPERIENCE_CANDIDATE">
+      <End Role="CANDIDATE" EntitySet="CANDIDATEs" />
+      <End Role="WORKEXPERIENCE" EntitySet="WORKEXPERIENCEs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

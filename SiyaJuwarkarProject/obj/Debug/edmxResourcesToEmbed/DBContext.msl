@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestModelStoreContainer" CdmEntityContainer="TestEntities">
+    <EntitySetMapping Name="CANDIDATEs">
+      <EntityTypeMapping TypeName="TestModel.CANDIDATE">
+        <MappingFragment StoreEntitySet="CANDIDATE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="PHONECODE" ColumnName="PHONECODE" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+          <ScalarProperty Name="STATE" ColumnName="STATE" />
+          <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+          <ScalarProperty Name="PINCODE" ColumnName="PINCODE" />
+          <ScalarProperty Name="IMAGELOCATION" ColumnName="IMAGELOCATION" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WORKEXPERIENCEs">
+      <EntityTypeMapping TypeName="TestModel.WORKEXPERIENCE">
+        <MappingFragment StoreEntitySet="WORKEXPERIENCE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CANDIDATEID" ColumnName="CANDIDATEID" />
+          <ScalarProperty Name="EMPLOYER" ColumnName="EMPLOYER" />
+          <ScalarProperty Name="FROMDATE" ColumnName="FROMDATE" />
+          <ScalarProperty Name="TODATE" ColumnName="TODATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
